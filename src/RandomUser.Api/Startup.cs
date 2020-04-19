@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Reflection;
 using MediatR;
 using MicroElements.Swashbuckle.NodaTime;
 using Microsoft.AspNetCore.Builder;
@@ -34,6 +37,10 @@ namespace RandomUser.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Random User Api", Version = "v1" });
                 c.ConfigureForNodaTime();
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
         }
 
