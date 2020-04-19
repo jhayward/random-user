@@ -1,6 +1,3 @@
+## Random User Api 
 
-
-11:30 - S
-
-12 - stop
-
+Generate and store random user data
